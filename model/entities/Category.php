@@ -9,7 +9,7 @@ use App\Entity;
 
 final class Category extends Entity{
 
-    private $id_category;
+    private $id;
     private $category_name;
 
     // chaque entité aura le même constructeur grâce à la méthode hydrate (issue de App\Entity)
@@ -30,9 +30,9 @@ final class Category extends Entity{
      *
      * @return  self
      */ 
-    public function setIdCategory($id_category)
+    public function setIdCategory($id)
     {
-        $this->id_category = $id_category;
+        $this->id_category = $id;
 
         return $this;
     }

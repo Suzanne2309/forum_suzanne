@@ -27,6 +27,5 @@
 
         <p>Ecrit par <a href="#">OccultCat</a>, le 2023-02-01 à 16:20:09</p>
         <p>Catégorie : <a href="#">Légendes urbaines</a></p>
-
     </article>
 </div>

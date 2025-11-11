@@ -9,7 +9,7 @@ use App\Entity;
 
 final class User extends Entity{
 
-    private $id_user;
+    private $id;
     private $pseudonym;
     private $creationDate;
 
@@ -29,8 +29,8 @@ final class User extends Entity{
      *
      * @return  self
      */ 
-    public function setId($id_user){
-        $this->id_user = $id_user;
+    public function setId($id){
+        $this->id_user = $id;
         return $this;
     }
 

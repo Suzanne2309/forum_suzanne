@@ -25,7 +25,7 @@ abstract class DAO{
     public static function connect(){
         
         self::$bdd = new \PDO(
-            "mysql:host=".self::$host.';dbname='.self::$dbname.,
+            "mysql:host=".self::$host.';dbname='.self::$dbname."",
             self::$dbuser,
             self::$dbpass,
             array(

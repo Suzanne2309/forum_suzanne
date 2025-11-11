@@ -9,7 +9,7 @@ use App\Entity;
 
 final class Topic extends Entity{
 
-    private $id_post;
+    private $id;
     private $title;
     private $text;
     private $user_id;
@@ -33,8 +33,8 @@ final class Topic extends Entity{
      *
      * @return  self
      */ 
-    public function setIdPost($id_post){
-        $this->id_post = $id_post;
+    public function setIdPost($id){
+        $this->id_post = $id;
         return $this;
     }
 
@@ -101,8 +101,8 @@ final class Topic extends Entity{
      *
      * @return  self
      */ 
-    public function setUserID($user_id){
-        $this->user_id = $user_id;
+    public function setUserID($id){
+        $this->user_id = $id;
         return $this;
     }
 
