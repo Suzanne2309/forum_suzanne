@@ -70,6 +70,6 @@ final class User extends Entity{
     }
 
     public function __toString() {
-        return "<a href='#'>" . $this->pseudonym . "</a>, membre depuis le " . $this->creationDate . "<br>";
+        return $this->pseudonym;
     }
 }
