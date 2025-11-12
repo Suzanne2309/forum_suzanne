@@ -12,7 +12,7 @@ final class Topic extends Entity{
     private $id;
     private $title;
     private $text;
-    private $user_id;
+    private $user;
     private $category;
     private $publicationDate;
     private $closed;
@@ -24,8 +24,8 @@ final class Topic extends Entity{
     /**
      * Get the value of id
      */ 
-    public function getIdPost(){
-        return $this->id_post;
+    public function getId(){
+        return $this->id;
     }
 
     /**
@@ -33,8 +33,8 @@ final class Topic extends Entity{
      *
      * @return  self
      */ 
-    public function setIdPost($id){
-        $this->id_post = $id;
+    public function setId($id){
+        $this->id = $id;
         return $this;
     }
 
@@ -76,7 +76,7 @@ final class Topic extends Entity{
      * Get the value of publicationDate
      */ 
     public function getPublicationDate(){
-        return $this->publication_date;
+        return $this->publicationDate;
     }
 
     /**
@@ -85,15 +85,15 @@ final class Topic extends Entity{
      * @return  self
      */ 
     public function setPublicationDate($publicationDate){
-        $this->publication_date = $publicationDate;
+        $this->publicationDate = $publicationDate;
         return $this;
     }
 
     /**
      * Get the value of user
      */ 
-    public function getUserID(){
-        return $this->user_id;
+    public function getUser(){
+        return $this->user;
     }
 
     /**
@@ -101,8 +101,8 @@ final class Topic extends Entity{
      *
      * @return  self
      */ 
-    public function setUserID($id){
-        $this->user_id = $id;
+    public function setUser($user){
+        $this->user = $user;
         return $this;
     }
 

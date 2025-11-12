@@ -12,7 +12,7 @@ namespace App;
  */
 abstract class DAO{
 
-    private static $host   = 'localhost';
+    private static $host   = 'mysql:host=127.0.0.1;port=3306';
     private static $dbname = 'forum_suzanne';
     private static $dbuser = 'root';
     private static $dbpass = '';
@@ -25,7 +25,7 @@ abstract class DAO{
     public static function connect(){
         
         self::$bdd = new \PDO(
-            "mysql:host=".self::$host.';dbname='.self::$dbname."",
+            self::$host.';dbname='.self::$dbname,
             self::$dbuser,
             self::$dbpass,
             array(

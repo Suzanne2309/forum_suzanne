@@ -20,9 +20,9 @@ final class Category extends Entity{
     /**
      * Get the value of id
      */ 
-    public function getIdCategory()
+    public function getId()
     {
-        return $this->id_category;
+        return $this->id;
     }
 
     /**
@@ -30,9 +30,9 @@ final class Category extends Entity{
      *
      * @return  self
      */ 
-    public function setIdCategory($id)
+    public function setId($id)
     {
-        $this->id_category = $id;
+        $this->id = $id;
 
         return $this;
     }

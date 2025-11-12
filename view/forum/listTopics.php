@@ -6,6 +6,6 @@
 <h1>Liste des topics</h1>
 
 <?php
-foreach($topics as $topic ){ ?>
-    <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?></p>
+foreach($topics as $topic){ ?>
+    <p><a href="#"><?= $topic ?></a> publié le <?= $topic->getPublicationDate() ?>, par <?= $topic->getUser() ?></p>
 <?php }

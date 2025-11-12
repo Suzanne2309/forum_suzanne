@@ -21,7 +21,7 @@ final class User extends Entity{
      * Get the value of id
      */ 
     public function getId(){
-        return $this->id_user;
+        return $this->id;
     }
 
     /**
@@ -30,37 +30,37 @@ final class User extends Entity{
      * @return  self
      */ 
     public function setId($id){
-        $this->id_user = $id;
+        $this->id = $id;
         return $this;
     }
 
     /**
-     * Get the value of nickName
+     * Get the value of pseudonym
      */ 
-    public function getNickName(){
+    public function getPseudonym(){
         return $this->pseudonym;
     }
 
     /**
-     * Set the value of nickName
+     * Set the value of pseudonym
      *
      * @return  self
      */ 
-    public function setNickName($pseudonym){
+    public function setPseudonym($pseudonym){
         $this->pseudonym = $pseudonym;
 
         return $this;
     }
 
     /**
-     * Get the value of id
+     * Get the value of creationDate
      */ 
     public function getCreationDate(){
         return $this->creationDate;
     }
 
     /**
-     * Set the value of id
+     * Set the value of creationDate
      *
      * @return  self
      */ 
@@ -70,6 +70,6 @@ final class User extends Entity{
     }
 
     public function __toString() {
-        return "" . $this->pseudonym . ", inscrit depuis le " . $this->creationDate . "<br>";
+        return "<a href='#'>" . $this->pseudonym . "</a>, membre depuis le " . $this->creationDate . "<br>";
     }
 }
