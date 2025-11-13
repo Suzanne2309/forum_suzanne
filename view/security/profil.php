@@ -20,7 +20,9 @@
 
 <div class="PostsByUser">
     <h3>Liste des postes de <?= $user->getPseudonym(); ?></h3>
-    <?php foreach($user as $user ){ ?>
-        <p><a href="index.php?ctrl=security&action=listTopicsByUser&id=<?= $topics->getId() ?>"><?= $topics->getTitle() ?></a></p>
-    <?php } ?>
+    <?php foreach($topics as $topic ){ 
+        if($topic->getUser()->getId() === $user->getId()) { ?>
+        <p><?= $topic->getTitle() ?> publié le <?= $topic->getPublicationDate() ?><br>
+        <?php }
+     } ?>
 </div>
