@@ -27,4 +27,18 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+    // récupérer tous les topics d'une catégorie spécifique (par son id)
+    public function findTopicsByUSer($id) {
+
+        $sql = "SELECT * 
+                FROM ".$this->tableName." t 
+                WHERE t.user_id = :id";
+       
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
 }

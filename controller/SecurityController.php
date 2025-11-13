@@ -20,32 +20,16 @@ class SecurityController extends AbstractController{
         $userManager = new UserManager();
         $topicManager = new TopicManager();
         $user = $userManager->findOneById($id);
+        $topics = $topicManager->findTopicsByUSer($id);
 
 
         return [
             "view" => VIEW_DIR."security/profil.php",
             "meta_description" => "Profil de ".$user,
             "data" => [
-                "user" => $user
-            ]
-        ];
-    }
-
-    public function listTopicsByUser($id) {
-
-        $topicManager = new TopicManager();
-        $userManager = new UserManager();
-        $user = $userManager->findOneById($id);
-        $topics = $topicManager->findTopicsByUser($id);
-
-        return [
-            "view" => VIEW_DIR."security/profil.php",
-            "meta_description" => "Liste des topics par utilisateur : ".$user,
-            "data" => [
                 "user" => $user,
                 "topics" => $topics
             ]
         ];
     }
-
 }
