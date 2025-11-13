@@ -36,7 +36,8 @@ class ForumController extends AbstractController implements ControllerInterface{
             "view" => VIEW_DIR. "forum/listTopics.php",
             "meta_description" => "Liste des topics du forum",
             "data" => [
-                "topics" => $topics
+                "topics" => $topics,
+                "category" => $category
             ]
             ];
     }
@@ -54,6 +55,20 @@ class ForumController extends AbstractController implements ControllerInterface{
             "data" => [
                 "category" => $category,
                 "topics" => $topics
+            ]
+        ];
+    }
+
+    public function topicDetail($id) {
+        $topicManager = new TopicManager();
+        $topics = $topicManager->findOneById($id);
+
+
+        return [
+            "view" => VIEW_DIR."forum/topicDetail.php",
+            "meta_description" => "Détail du post ".$topics,
+            "data" => [
+                "topic" => $topics
             ]
         ];
     }

@@ -28,7 +28,7 @@ class TopicManager extends Manager{
         );
     }
 
-    // récupérer tous les topics d'une catégorie spécifique (par son id)
+    // récupérer tous les topics d'un user spécifique (par son id)
     public function findTopicsByUSer($id) {
 
         $sql = "SELECT * 
@@ -41,4 +41,5 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
 }
