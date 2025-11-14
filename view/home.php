@@ -11,7 +11,7 @@
     </button>
 </div>
 
-<div class="recentPost">
+<div class="recentTopic">
     <h2>Le dernier post publié</h2>
     <!-- img -->
     <article>

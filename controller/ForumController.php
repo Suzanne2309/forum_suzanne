@@ -6,6 +6,7 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
+use Model\Managers\CommentManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -61,15 +62,19 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function topicDetail($id) {
         $topicManager = new TopicManager();
+        $commentManager = new CommentManager();
         $topics = $topicManager->findOneById($id);
+        $comments = $commentManager->findCommentsByTopic($id);
 
 
         return [
             "view" => VIEW_DIR."forum/topicDetail.php",
             "meta_description" => "Détail du post ".$topics,
             "data" => [
-                "topic" => $topics
+                "topics" => $topics,
+                "comments" => $comments
             ]
         ];
     }
+
 }

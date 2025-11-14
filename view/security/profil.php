@@ -18,7 +18,7 @@
     </article>
 </div>
 
-<div class="PostsByUser">
+<div class="TopicsByUser">
     <h3>Liste des postes de <?= $user->getPseudonym(); ?></h3>
     <?php foreach($topics as $topic ){ 
         if($topic->getUser()->getId() === $user->getId()) { ?>
