@@ -10,7 +10,62 @@ use Model\Managers\UserManager;
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
 
-    public function register () {}
+
+
+    public function register () {
+        $userManager = new UserManager();
+
+        if(isset($_POST["submit"])) {
+            //filtrer la saisie des champs du formulaire d'inscription
+                $pseudonym = filter_input(INPUT_POST, "pseudonym", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+                $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if($pseudonym && $email && $pass1 && $pass2) {
+
+                //On vérifie que l'email existe pas déjà
+                $user = $userManager->findUserByEmail($email);
+
+            //Si l'utilisateur existe
+                    if($user) {
+                        header("index.php?ctrl=security&action=login"); exit;
+                    } else { //Sinon on va insérer l'utilisateur dans la BDD
+                        if($pass1 == $pass2 && strlen($pass1) >= 12) {
+
+                            $creationDateNow  = date('Y-m-d');
+                            //On définit $data pour utiliser ensuite la fonction add($data) crée dans Manager.php
+                            $data = ["pseudonym" => $pseudonym, "password" => password_hash($pass1, PASSWORD_DEFAULT), "creationDate" => $creationDateNow,  "email" => $email, "aboutMe" => ""];
+                        //utiliser add($data) du Manager.php au lieu de :
+                            // $insertUser = $pdo->prepare("INSERT INTO user (pseudonym, password, creationDate, email) VALUES (:pseudo, :password, CURTIME(), :email)");
+                            // $insertUser->execute([
+                            //     "pseudonym" => $pseudonym,
+                            //     "password" => password_hash($pass1, PASSWORD_DEFAULT),
+                            //     "email" => $email
+                            // ]);
+                            //Ainsi pas besoin de créer une fonction pour la rêquette dasn UserManager comme prévu au début, car add existe déjà
+                            $user = $userManager->add($data);
+
+                            header("index.php?ctrl=security&action=home"); exit;
+                        } else {
+                            echo "Les mots de passe sont pas identique ou mot de passe trop court";
+                            //message "Les mots de passe sont pas identiques ou mot de passe trop court !"
+                        }
+ 
+                    }
+                } else {
+                    echo "Problème de saisie dans les champs de formulaire";
+                    // message "Problème de saisie dans les champs de formulaire"
+                };
+        };
+
+        return [
+            "view" => VIEW_DIR."security/registration.php",
+            "meta_description" => "Inscription",
+            "data" => []
+        ];
+    }
+
     public function login () {}
     public function logout () {}
 

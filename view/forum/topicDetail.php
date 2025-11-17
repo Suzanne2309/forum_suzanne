@@ -35,25 +35,29 @@
     <div class="commentByTopic">
     <h3>Liste des commentaires de "<?= $topics->getTitle(); ?>"</h3>
     <?php
-    $hasComment = false; 
-    foreach($comments as $comment ){ 
-        if($comment->getTopic()->getId() === $topics->getId()) { 
-            $hasComment = true;?>
-        <div class="commentBox">
-            <div class="commentContent">
-            <h4><?= $comment->getTitle() ?></h4>
-            <p><?= $comment->getText() ?></p> 
-            </div>
-            <div class="commentInfos">
-            <p><a href="index.php?ctrl=security&action=profil&id=<?= $comment->getUser()->getId() ?>"><?= $comment->getUser() ?></a><br></p>
-            <p><?= $comment->getPublicationDate() ?></p>
-            </div>
-        </div>
-        <?php }
-     }; 
-    if(!$hasComment) { ?>
-        <p>Il n'y a pas encore de commentaire pour ce post. Vous pourriez être le premier !</p>
-    <?php};?>
+    if (!empty($comments)) {
+        $hasComment = false; 
+            foreach($comments as $comment ){ 
+                if($comment->getTopic()->getId() === $topics->getId()) { 
+                    $hasComment = true;?>
+                    <div class="commentBox">
+                        <div class="commentContent">
+                            <h4><?= $comment->getTitle() ?></h4>
+                            <p><?= $comment->getText() ?></p> 
+                        </div>
+                        <div class="commentInfos">
+                            <p><a href="index.php?ctrl=security&action=profil&id=<?= $comment->getUser()->getId() ?>"><?= $comment->getUser() ?></a><br></p>
+                            <p><?= $comment->getPublicationDate() ?></p>
+                        </div>
+                    </div>
+                <?php };
+            };
+
+            if (!$hasComment) { ?>
+                <p>Pas encore de commentaires ! Et si vous seriez le premier ? </p>
+            <?php };
+    };?>
+    
     </div>
 
 </div>
