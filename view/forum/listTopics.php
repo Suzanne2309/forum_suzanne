@@ -6,10 +6,19 @@
 <h1>Liste des topics</h1>
 
 <?php
-foreach($topics as $topic){ ?>
-    <p><a href="index.php?ctrl=forum&action=topicDetail&id=<?= $topic->getId() ?>"><?= $topic ?></a> publié le <?= $topic->getPublicationDate() ?>, par <a href="index.php?ctrl=security&action=profil&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser() ?></a></p>
-    <p>Catégorie : <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>"><?= $topic->getCategory() ?></a></p>
-<?php } ?>
+if (!empty($topics)) {
+    $hasTopic = false; 
+    foreach($topics as $topic){ 
+        $hasTopic = true;?>
+        <p><a href="index.php?ctrl=forum&action=topicDetail&id=<?= $topic->getId() ?>"><?= $topic ?></a> publié le <?= $topic->getPublicationDate() ?>, par <a href="index.php?ctrl=security&action=profil&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser() ?></a></p>
+        <p>Catégorie : <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>"><?= $topic->getCategory() ?></a></p>
+<?php }; ?>
 
-<p>Vous n'avez pas trouvé la catégorie que vous vouliez ? Ajouter là en deux click !</p>
-<a href="index.php?ctrl=forum&action=addNewCategory">Au formulaire</a>
+    <a href="index.php?ctrl=forum&action=addTopicToCategory&id=<?= $category->getId()?>">Ajouter un post</a>
+
+<?php //Plus de message erreur quand une category n'a pas de topic associé mais affiche pas les balises html
+    if (!$hasTopic) { ?>
+        <p>Pas encore de post pour cette catégorie ! Et si vous lui en ajouteriez une ? </p>
+        <a href="index.php?ctrl=forum&action=addTopicToCategory&id=<?= $category->getId()?>">Ajouter</a>
+    <?php };
+}

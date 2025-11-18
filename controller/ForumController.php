@@ -85,7 +85,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             $categoryName = filter_input(INPUT_POST, "categoryName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             if($categoryName) {
-                //On définit la donnée filtré à ajouter en base de donnée, dans la colonne corrspondante
+                //On définit la donnée filtré à ajouter en base de donnée, dans la colonne correspondante
                 $data = ["categoryName" => $categoryName];
                 $newCatgory = $categoryManager->add($data);
 
@@ -100,8 +100,31 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function addTopicToCategory() {
+    public function addTopicToCategory($id) {
+        $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->findOneById($id);
+        $topics = $topicManager->findAll(["title", "DESC"]);
         
+        if(isset($_POST["submit"])) {
+            //puisqu'on utilise une liste déroulante, pas besoin de filtrer
+
+            //On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
+            $data = ["category_id" => $id];
+            $topic = $topicManager->add($data);
+
+            header("Location : index.php?ctrl=forum&action=listTopics)"); exit;
+        };
+
+
+        return [
+            "view" => VIEW_DIR."forum/addTopicToCategory.php",
+            "meta_description" => "Ajouter un Topic à une catégorie",
+            "data" => [
+                "category" => $category,
+                "topics" => $topics  
+            ]
+        ];
     }
 
 }
