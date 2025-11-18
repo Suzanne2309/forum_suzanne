@@ -21,19 +21,24 @@
                         <div id="nav-left">
                             <a href="index.php?ctrl=home&action=index">Accueil</a>
                             <?php
-                            if(App\Session::isAdmin()){
+                            // if(App\Session::isAdmin()){
                                 ?>
                                 <a href="index.php?ctrl=home&action=users">Les profils</a>
-                            <?php } ?>
+                            <?php
+                        //  } 
+                         ?>
                         </div>
                         <div id="nav-right">
                         <?php
                             // si l'utilisateur est connecté 
                             if(App\Session::getUser()){
+                                // var_dump($_SESSION["user"]);die;
                                 ?>
                                 <a href="index.php?ctrl=security&action=profile">
                                     <span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?>
                                 </a>
+                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+                                <a href="index.php?ctrl=forum&action=listTopics">Liste des posts</a>
                                 <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
                             }

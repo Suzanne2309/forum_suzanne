@@ -12,6 +12,8 @@ final class User extends Entity{
     private $id;
     private $pseudonym;
     private $creationDate;
+    private $role;
+    private $password;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -66,6 +68,23 @@ final class User extends Entity{
      */ 
     public function setCreationDate($creationDate){
         $this->creationDate = $creationDate;
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword(){
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password){
+        $this->password = $password;
         return $this;
     }
 

@@ -77,4 +77,31 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
+    public function addNewCategory() {
+        $categoryManager = new CategoryManager();
+
+        if(isset($_POST["submit"])) {
+            //filtrer la saisie des champs du formulaire d'ajout d'une catégorie
+            $categoryName = filter_input(INPUT_POST, "categoryName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($categoryName) {
+                //On définit la donnée filtré à ajouter en base de donnée, dans la colonne corrspondante
+                $data = ["categoryName" => $categoryName];
+                $newCatgory = $categoryManager->add($data);
+
+                header("Location : index.php?ctrl=forum&action=listTopics"); exit;
+            }
+        };
+
+        return [
+            "view" => VIEW_DIR."forum/addCategory.php",
+            "meta_description" => "Formulaire d'ajout de catégorie",
+            "data" => []
+        ];
+    }
+
+    public function addTopicToCategory() {
+        
+    }
+
 }

@@ -2,7 +2,7 @@
 
 <div class="wrapper">
     
-    <h2>Bienvenue chez Ghosty, le forum du paranormal !</h2>
+    <h2>Rejoins Ghosty, le forum du paranormal !</h2>
 
     <div class="registerForm">
         <form action="index.php?ctrl=security&action=register" method="post">

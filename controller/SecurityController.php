@@ -29,7 +29,7 @@ class SecurityController extends AbstractController{
 
             //Si l'utilisateur existe
                     if($user) {
-                        header("index.php?ctrl=security&action=login"); exit;
+                        header("Location : index.php?ctrl=security&action=login"); exit;
                     } else { //Sinon on va insérer l'utilisateur dans la BDD
                         //On vérifie que le mot de passe soit bien securisé (définir un pattern et utilisation de preg_match) et que les deux champs de mot de passe soit identique
                         $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{12,}$/';
@@ -43,7 +43,7 @@ class SecurityController extends AbstractController{
                             //Ainsi pas besoin de créer une fonction pour la rêquette dasn UserManager comme prévu au début, car add existe déjà
                             $user = $userManager->add($data);
 
-                            header("index.php?ctrl=security&action=login"); exit;
+                            header("Location : index.php?ctrl=security&action=login"); exit;
                         } else {
                             echo "<p class='message'>Les mots de passe sont pas identique ou mot de passe correspondant pas aux critères !</p>";
                             //message "Les mots de passe sont pas identiques ou mot de passe correspondant pas aux critères !"
@@ -63,8 +63,55 @@ class SecurityController extends AbstractController{
         ];
     }
 
-    public function login () {}
-    public function logout () {}
+    public function login () {
+        $userManager = new UserManager();
+
+        if(isset($_POST["submit"])) {
+            //filtrer la saisie des champs du formulaire d'inscription
+            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            if($email && $password) {
+
+                //On cherche l'utilisateur dont l'email correspond dans la bdd
+                $user = $userManager->findUserByEmail($email);
+                // var_dump($user);                
+          
+                if($user) {
+                    //var_dump($user);
+    
+                    if(password_verify($password, $user->getPassword())) {
+                        $_SESSION["user"] = $user;
+                        header("Location : index.php?ctrl=home&action=index");exit;
+                    } else {
+                        echo "Les données entrée ne correspondent avec aucun profil existant";
+                        header("Location : index.php?ctrl=security&action=login");exit;
+                    }
+                } else {
+                        echo "Les données entrée ne correspondent avec aucun profil existant";
+                        header("Location : index.php?ctrl=security&action=login");exit;
+                }
+            }
+        }
+
+        return [
+            "view" => VIEW_DIR."security/login.php",
+            "meta_description" => "Connexion",
+            "data" => []
+        ];
+    }
+
+    public function logout () {
+        $userManager = new UserManager();
+
+        unset($_SESSION["user"]);
+
+        return [
+            "view" => VIEW_DIR."home.php",
+            "meta_description" => "Déconnexion",
+            "data" => []
+        ];
+    }
 
     //Méthodes liées au profil
     public function profil($id) {

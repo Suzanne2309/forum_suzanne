@@ -8,4 +8,7 @@
 <?php
 foreach($categories as $category ){ ?>
     <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getCategoryName() ?></a></p>
-<?php }
+<?php } ?>
+
+<p>Vous n'avez pas trouvé la catégorie que vous vouliez ? Ajouter là en deux click !</p>
+<a href="index.php?ctrl=forum&action=addNewCategory">Au formulaire</a>

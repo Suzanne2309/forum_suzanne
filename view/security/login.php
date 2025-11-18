@@ -1,13 +1,8 @@
-<?php
-    $user = $result["data"]['user'];
-
-?>
-
 <div class="wrapper">
     
-    <h2>Bienvenue chez Ghosty, le forum du paranormal !</h2>
+    <h2>Bienvenue, la communauté Ghosty est heureux de te revoir !</h2>
 
-    <div class="registerForm">
+    <div class="connexionForm">
         <form action="index.php?ctrl=security&action=login" method="post">
             <label for="email">Votre e-amil :</label>
             <input type="email" name="email" id="email"><br>
