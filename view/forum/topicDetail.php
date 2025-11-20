@@ -37,15 +37,20 @@
     <?php
     if (!empty($comments)) {
             foreach($comments as $comment ){ 
-                if($comment->getTopic()->getId() === $topics->getId()) { 
-                    $hasComment = true;?>
+                if($comment->getTopic()->getId() === $topics->getId()) { ?>
                     <div class="commentBox">
                         <div class="commentContent">
                             <h4><?= $comment->getTitle() ?></h4>
                             <p><?= $comment->getText() ?></p> 
                         </div>
                         <div class="commentInfos">
-                            <p><a href="index.php?ctrl=security&action=profil&id=<?= $comment->getUser()->getId() ?>"><?= $comment->getUser() ?></a><br></p>
+                            <?php 
+                            $user = $comment->getUser();
+                            if(!$user) { ?>
+                                <p>Auteur supprimé</p>
+                            <?php } else { ?>
+                            <p><a href="index.php?ctrl=security&action=profil&id=<?= $user->getId() ?>"><?= $comment->getUser() ?></a><br></p>
+                            <?php } ?>
                             <p><?= $comment->getPublicationDate() ?></p>
                         </div>
                     </div>

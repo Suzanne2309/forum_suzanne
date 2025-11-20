@@ -170,4 +170,25 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+    public function deleteTopic($id) {
+        $topicManager = new TopicManager();
+        $topics = $topicManager->findOneById($id);
+
+
+        if(isset($_POST["submit"])) {
+        
+            $deltedTopic = $topicManager->delete($id);
+
+            $this->redirectTo("forum", "listTopics");
+        };
+
+        return [
+            "view" => VIEW_DIR."forum/listTopics.php",
+            "meta_description" => "Supprimer un topic",
+            "data" => [
+                "topics" => $topics,
+            ]
+        ];
+    }
 }
