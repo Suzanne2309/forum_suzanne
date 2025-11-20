@@ -119,7 +119,7 @@ class SecurityController extends AbstractController{
         $userManager = new UserManager();
         $topicManager = new TopicManager();
         $user = $userManager->findOneById($id);
-        $topics = $topicManager->findTopicsByUSer($id);
+        $topics = $topicManager->findTopicsByUser($id);
 
 
         return [

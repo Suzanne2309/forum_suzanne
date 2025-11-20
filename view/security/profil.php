@@ -22,7 +22,7 @@
     <h3>Liste des postes de <?= $user->getPseudonym(); ?></h3>
     <?php foreach($topics as $topic ){ 
         if($topic->getUser()->getId() === $user->getId()) { ?>
-        <p><?= $topic->getTitle() ?> publié le <?= $topic->getPublicationDate() ?><br>
+        <p><a href="index.php?ctrl=forum&action=topicDetail&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a> publié le <?= $topic->getPublicationDate() ?><br>
         <?php }
      } ?>
 </div>

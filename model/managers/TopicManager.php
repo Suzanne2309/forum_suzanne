@@ -29,7 +29,7 @@ class TopicManager extends Manager{
     }
 
     // récupérer tous les topics d'un user spécifique (par son id)
-    public function findTopicsByUSer($id) {
+    public function findTopicsByUser($id) {
 
         $sql = "SELECT * 
                 FROM ".$this->tableName." t 

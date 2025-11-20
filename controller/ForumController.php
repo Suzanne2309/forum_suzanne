@@ -7,6 +7,7 @@ use App\ControllerInterface;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
 use Model\Managers\CommentManager;
+use Model\Managers\UserManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -40,7 +41,7 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "topics" => $topics,
                 "category" => $category
             ]
-            ];
+        ];
     }
 
     public function listTopicsByCategory($id) {
@@ -103,18 +104,25 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function addTopicToCategory($id) {
         $topicManager = new TopicManager();
         $categoryManager = new CategoryManager();
+        $userManager = new UserManager();
         $category = $categoryManager->findOneById($id);
-        $topics = $topicManager->findAll(["title", "DESC"]);
+
+        $topics = null;
+
         
-        if(isset($_POST["submit"])) {
-            //puisqu'on utilise une liste déroulante, pas besoin de filtrer
+        // if(isset($_POST["submit"])) {
+        //     $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        //     $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            //On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
-            $data = ["category_id" => $id];
-            $topic = $topicManager->add($data);
+        //     // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
+        //     if($title && $text) {
+        //         $creationDateNow  = date('Y-m-d');
+        //         $data = ["title" => $title, "text" => $text, "publicationDate" => $creationDateNow, "user_id" => $id, "category_id" => $id];
+        //         $topics = $topicManager->add($data);
 
-            header("Location : index.php?ctrl=forum&action=listTopics)"); exit;
-        };
+        //         header("Location : index.php?ctrl=forum&action=listTopics"); exit;
+        //     }
+        // };
 
 
         return [
@@ -122,7 +130,8 @@ class ForumController extends AbstractController implements ControllerInterface{
             "meta_description" => "Ajouter un Topic à une catégorie",
             "data" => [
                 "category" => $category,
-                "topics" => $topics  
+                "topics" => $topics,
+                "user" => $user
             ]
         ];
     }
