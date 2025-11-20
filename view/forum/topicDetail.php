@@ -57,7 +57,21 @@
                 <p>Pas encore de commentaires ! Et si vous seriez le premier ? </p>
             <?php };
     };?>
-    
     </div>
+    <div class="CommentForm">
+       <h2>Et toi, qu'as-tu pensé de ce post ?</h2>
+
+        <form action="index.php?ctrl=forum&action=addComment&id=<?= $topics->getId();?>" method="post">
+            <label for="title">Titre du commentaire :</label>
+            <input type="text" name="title" id="title"><br>
+
+            <label for="text">Votre texte ici :</label>
+            <input type="text" name="text" id="text"><br>
+
+            <input type="submit" name="submit" value="Publier">
+        </form>
+    </div>
+
+</div>
 
 </div>

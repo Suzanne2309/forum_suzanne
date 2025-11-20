@@ -14,13 +14,12 @@ abstract class AbstractController{
 
     public function index() {}
 
-    public function redirectTo($ctrl = null, $action = null, $id = null){
+    public function redirectTo($ctrl = null, $action = null, $id = null){ //On défini la valeur de base des paramètres à null 
+        $url = $ctrl ? "?ctrl=".$ctrl : ""; //Si on a un controleur il prendra alors la valeur dans l'url
+        $url.= $action ? "&action=".$action : ""; //Si on a une action elle prendra alors la valeur dans l'url
+        $url.= $id ? "&id=".$id : ""; //Si on a un id il prendra alors la valeur dans l'url
 
-        $url = $ctrl ? "?ctrl=".$ctrl : "";
-        $url.= $action ? "&action=".$action : "";
-        $url.= $id ? "&id=".$id : "";
-
-        header("Location: $url");
+        header("Location: $url"); //On utilise header location en mettant l'url
         die();
     }
 

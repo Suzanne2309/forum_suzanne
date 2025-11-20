@@ -101,39 +101,73 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function addTopicToCategory($id) {
+    public function addTopic($id) {
         $topicManager = new TopicManager();
         $categoryManager = new CategoryManager();
-        $userManager = new UserManager();
         $category = $categoryManager->findOneById($id);
 
-        $topics = null;
+        if(isset($_POST["submit"])) {
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        
-        // if(isset($_POST["submit"])) {
-        //     $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        //     $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if(Session::getUser()) {
+                $user = Session::getUser()->getId();
+            } else {
+                $this->redirectTo("security", "login");
+            }
 
-        //     // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
-        //     if($title && $text) {
-        //         $creationDateNow  = date('Y-m-d');
-        //         $data = ["title" => $title, "text" => $text, "publicationDate" => $creationDateNow, "user_id" => $id, "category_id" => $id];
-        //         $topics = $topicManager->add($data);
+            // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
+            if($title && $text) {
+                $data = ["title" => $title, "text" => $text, "user_id" => $user, "category_id" => $id];
+                $topics = $topicManager->add($data);
 
-        //         header("Location : index.php?ctrl=forum&action=listTopics"); exit;
-        //     }
-        // };
+                $this->redirectTo("forum", "listTopicsByCategory", $id);
+            }
+        };
 
 
         return [
-            "view" => VIEW_DIR."forum/addTopicToCategory.php",
-            "meta_description" => "Ajouter un Topic à une catégorie",
+            "view" => VIEW_DIR."forum/addTopic.php",
+            "meta_description" => "Ajouter un Topic",
             "data" => [
                 "category" => $category,
-                "topics" => $topics,
-                "user" => $user
             ]
         ];
     }
 
+    public function addComment($id) {
+        $topicManager = new TopicManager();
+        $commentManager = new CommentManager();
+        $topics = $topicManager->findOneById($id);
+        $comments = $commentManager->findCommentsByTopic($id);
+
+        if(isset($_POST["submit"])) {
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if(Session::getUser()) {
+                $user = Session::getUser()->getId();
+            } else {
+                $this->redirectTo("security", "login");
+            }
+
+            // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
+            if($title && $text) {
+                $data = ["title" => $title, "text" => $text, "user_id" => $user, "topic_id" => $id];
+                $comments = $commentManager->add($data);
+
+                $this->redirectTo("forum", "topicDetail", $id);
+            }
+        };
+
+
+        return [
+            "view" => VIEW_DIR."forum/topicDetail.php",
+            "meta_description" => "Ajouter un commentaire",
+            "data" => [
+                "topics" => $topics,
+                "comments" => $comments
+            ]
+        ];
+    }
 }
