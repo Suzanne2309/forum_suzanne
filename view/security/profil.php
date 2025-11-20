@@ -20,9 +20,15 @@
 
 <div class="TopicsByUser">
     <h3>Liste des postes de <?= $user->getPseudonym(); ?></h3>
-    <?php foreach($topics as $topic ){ 
-        if($topic->getUser()->getId() === $user->getId()) { ?>
-        <p><a href="index.php?ctrl=forum&action=topicDetail&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a> publié le <?= $topic->getPublicationDate() ?><br>
+
+    <?php
+    if(!empty($topics)) {
+        foreach($topics as $topic ){ 
+            if($topic->getUser()->getId() === $user->getId()) { ?>
+            <p><a href="index.php?ctrl=forum&action=topicDetail&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a> publié le <?= $topic->getPublicationDate() ?><br>
         <?php }
-     } ?>
+        }
+    } else { ?>
+        <p>Pas encore de post publié !</p>
+    <?php }?>
 </div>

@@ -1,7 +1,3 @@
-
-    <!-- $newCategory = $result['data']['categoryName']; -->
-
-
 <div class="wrapper">
     
     <h2>Ajouter votre catégorie!</h2>

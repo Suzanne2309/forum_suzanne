@@ -36,7 +36,6 @@
     <h3>Liste des commentaires de "<?= $topics->getTitle(); ?>"</h3>
     <?php
     if (!empty($comments)) {
-        $hasComment = false; 
             foreach($comments as $comment ){ 
                 if($comment->getTopic()->getId() === $topics->getId()) { 
                     $hasComment = true;?>
@@ -52,11 +51,9 @@
                     </div>
                 <?php };
             };
-
-            if (!$hasComment) { ?>
-                <p>Pas encore de commentaires ! Et si vous seriez le premier ? </p>
-            <?php };
-    };?>
+    } else { ?>
+        <p>Pas encore de commentaires ! Et si vous seriez le premier ? </p>
+    <?php };?>
     </div>
     <div class="CommentForm">
        <h2>Et toi, qu'as-tu pensé de ce post ?</h2>
