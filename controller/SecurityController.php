@@ -82,14 +82,14 @@ class SecurityController extends AbstractController{
     
                     if(password_verify($password, $user->getPassword())) {
                         $_SESSION["user"] = $user;
-                        header("Location : index.php?ctrl=home&action=index");exit;
+                        $this->redirectTo("home", "index");
                     } else {
                         echo "Les données entrée ne correspondent avec aucun profil existant";
-                        header("Location : index.php?ctrl=security&action=login");exit;
+                        $this->redirectTo("security", "login");
                     }
                 } else {
                         echo "Les données entrée ne correspondent avec aucun profil existant";
-                        header("Location : index.php?ctrl=security&action=login");exit;
+                        $this->redirectTo("security", "login");
                 }
             }
         }

@@ -193,8 +193,9 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function updateComment($id) {
+        $topicManager = new TopicManager();
         $commentManager = new CommentManager();
-        $comment = $commentManager->findOneById($id);
+        $comments = $commentManager->findOneById($id);
 
         if(isset($_POST["submit"])) {
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -205,14 +206,14 @@ class ForumController extends AbstractController implements ControllerInterface{
             } else {
                 $this->redirectTo("security", "login");
             }
+            //On définiti la variable $userCOmment qui sera l'id de l'utilisateur qui a crée le commentaire pour la comparaison en-dessous
+            $userComment = $comments->getUser()->getId();
 
-            $userComment = $comment->getUser()->getId();
-            // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
-            if($title && $text && $user == $userComment) {
+            if($title && $text && $user == $userComment) { //on modifie seulement si le le titre et le texte son filtré ET si l'id user(session) = l'id du user du commentaire à modifier
                 $data = ["title" => $title, "text" => $text];
-                $commentUpdate = $commentManager->update($data, $id);
+                $commentUpdate = $commentManager->update($data, $id); 
 
-                $this->redirectTo("forum", "listTopic");
+                $this->redirectTo("forum", "listTopics"); 
             } else {
                 echo "<p>Vous n'êtes pas autorisé à modifier un commentaire qui n'est pas de vous !</p>";
             }
@@ -222,7 +223,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             "view" => VIEW_DIR."forum/updateComment.php",
             "meta_description" => "Modifier un commentaire",
             "data" => [
-                "comment" => $comment
+                "comments" => $comments
             ]
         ];
     }
