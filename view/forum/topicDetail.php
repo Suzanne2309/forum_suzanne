@@ -53,6 +53,9 @@
                             <?php } ?>
                             <p><?= $comment->getPublicationDate() ?></p>
                         </div>
+                        <div>
+                            <a href="index.php?ctrl=forum&action=updateComment&id=<?= $comment->getId() ?>">Modifier</a>
+                        </div>
                     </div>
                 <?php };
             };

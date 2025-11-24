@@ -191,4 +191,36 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+    public function updateComment($id) {
+        $commentManager = new CommentManager();
+        $comment = $commentManager->findOneById($id);
+
+        if(isset($_POST["submit"])) {
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if(Session::getUser()) {
+                $user = Session::getUser()->getId();
+            } else {
+                $this->redirectTo("security", "login");
+            }
+
+            // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
+            if($title && $text) {
+                $data = ["title" => $title, "text" => $text];
+                $comment = $commentManager->update($data, $id);
+
+                $this->redirectTo("forum", "listTopic");
+            }
+        };
+
+        return [
+            "view" => VIEW_DIR."forum/updateComment.php",
+            "meta_description" => "Modifier un commentaire",
+            "data" => [
+                "comment" => $comment,
+            ]
+        ];
+    }
 }

@@ -1,14 +1,19 @@
 <div class="hero">
     <h1>Ghosty : Le forum d’un monde invisible !</h1>
 
-    <p>Nous sommes une communauté qui cherche de l’aventure dans un monde différent de notre réalité. Ici vous pourrez découvrir des légendes, parler de mythologies ou simplement raconter votre histoire qui vous à amener dans ce vaste monde.</p>
+    <?php
+    if(App\Session::getUser()){ ?>
+        <p> Bon retour parmis nous ! Allez-vous nous enchanter avec une nouvelle légende ou témoignage mystérieux ? </p>
+    <?php } else { ?>
+        <p>Nous sommes une communauté qui cherche de l’aventure dans un monde différent de notre réalité. Ici vous pourrez découvrir des légendes, parler de mythologies ou simplement raconter votre histoire qui vous à amener dans ce vaste monde.</p>
 
-    <button>
-        <a href="index.php?ctrl=security&action=login">Se connecter</a>
-    </button>
-    <button>
-        <a href="index.php?ctrl=security&action=register">S'inscrire</a>
-    </button>
+        <button>
+            <a href="index.php?ctrl=security&action=login">Se connecter</a>
+        </button>
+        <button>
+            <a href="index.php?ctrl=security&action=register">S'inscrire</a>
+        </button>
+    <?php } ?>
 </div>
 
 <div class="recentTopic">

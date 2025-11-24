@@ -75,6 +75,31 @@ abstract class Manager{
         return DAO::delete($sql, ['id' => $id]); 
     }
 
+    public function update($data, $id){
+        //On définit la variable setStatements en tableau vide. Elle va statuer le set de la rêquette sql.
+        $setStatements = [];
+        
+        //On boucle sur le tableau des données ($data) avec la clé (colonne) ayant la valeur (value)
+        foreach ($data as $key => $value) {
+            $setStatements[] = "$key = :$key"; //On remplit le tableau de setStatements avec la syntaxe de SET de la rêquette sql (colonne = nouvelle valeur)
+        }
+        //On définit la variable seClause étant égal au contenue du tableau de la variable setStatements qui à été coupé par une virgule entre chaque ligne (colonne 1 = nouvelle valeur 1, colonne 2 = nouvelle valeur 2, ...). Ainsi s'il y a plusieurs modification, elles seront séparé par une virgule comme le veut MySQL.
+        $setClause = implode(',', $setStatements);
+        //On définit la rêquette sql en utilisant la variable setClause
+        $sql = "UPDATE " . $this->tableName . "
+        SET " . $setClause . "
+        WHERE id_" . $this->tableName . " = :id
+        ";
+ 
+        try {
+            $data['id'] = $id;
+            return DAO::update($sql, $data);
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
+    }
+
     private function generate($rows, $class){
         foreach($rows as $row){
             yield new $class($row);
