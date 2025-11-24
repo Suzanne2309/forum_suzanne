@@ -4,10 +4,139 @@
     box-sizing: border-box;
 }
 
-.wrapper{
-    background-color: #F28C28;
+
+/**************************************************************** View : Layout ****************************************************************/
+.wrapper {
+    width: 100%;
+}
+
+.mainpage {
+    width: 100%;
 }
 
 h1 {
-    color: rgb(0, 122, 156);
+    color: #F28C28;
+    font-size: 3em;
 }
+
+/************************** Header **************************/
+header {
+    background-color: #F28C28;
+    width: 100%;
+    padding: 1.3em;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.logo {
+    width: 10%;
+    padding: 0.3em;
+}
+
+nav {
+    width: 50%;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.search_bar {
+    width: 20%;
+    padding: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connexionButtons {
+    width: 20%;
+    padding: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/************************** Main **************************/
+
+main {
+    background-color: #FFF5EE;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+/************************** Footer **************************/
+
+footer {
+    background-color: #F28C28;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.logo {
+    width: 20%;
+    padding: 0.3em;
+}
+
+.legal {
+    width: 60%;
+    padding: 0.3em;
+    color: #fff;
+}
+
+.legal a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.connexionButtons {
+    width: 20%;
+    padding: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/**************************************************************** View : Home ****************************************************************/
+
+.hero p {
+    width: 100%;
+    color: #000;
+    font-size: 1.2em;
+}
+
+.recentTopic {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+}
+
+.recentTopic article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.recentTopic article p {
+    
+}
+
+/**************************************************************** View : ??? ****************************************************************/
