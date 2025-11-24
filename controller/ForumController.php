@@ -206,12 +206,15 @@ class ForumController extends AbstractController implements ControllerInterface{
                 $this->redirectTo("security", "login");
             }
 
+            $userComment = $comment->getUser()->getId();
             // On définit la donnée à ajouter en base de donnée, dans la colonne correspondante
-            if($title && $text) {
+            if($title && $text && $user == $userComment) {
                 $data = ["title" => $title, "text" => $text];
-                $comment = $commentManager->update($data, $id);
+                $commentUpdate = $commentManager->update($data, $id);
 
                 $this->redirectTo("forum", "listTopic");
+            } else {
+                echo "<p>Vous n'êtes pas autorisé à modifier un commentaire qui n'est pas de vous !</p>";
             }
         };
 
@@ -219,7 +222,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             "view" => VIEW_DIR."forum/updateComment.php",
             "meta_description" => "Modifier un commentaire",
             "data" => [
-                "comment" => $comment,
+                "comment" => $comment
             ]
         ];
     }
