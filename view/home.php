@@ -7,10 +7,10 @@
         <p>Nous sommes une communauté qui cherche de l’aventure dans un monde différent de notre réalité.
         Ici vous pourrez découvrir des légendes, parler de mythologies ou simplement raconter votre histoire qui vous à amener dans ce vaste monde.</p>
         <div class="heroButtons">
-            <button class="home">
+            <button class="mainBtn">
                 <a href="index.php?ctrl=security&action=login">Se connecter</a>
             </button>
-            <button class="home">
+            <button class="mainBtn">
                 <a href="index.php?ctrl=security&action=register">S'inscrire</a>
             </button>
         </div>

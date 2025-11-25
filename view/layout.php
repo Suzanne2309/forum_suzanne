@@ -59,10 +59,10 @@
                     <div class="connexionButtons">
                         <?php
                         if(App\Session::getUser()){ ?>
-                        <button class="déconnexion" aria-label="Bouton déconnexion"><a href="index.php?ctrl=security&action=logout">Déconnexion</a></button>
+                        <button class="layoutBtn" aria-label="Bouton déconnexion"><a href="index.php?ctrl=security&action=logout">Déconnexion</a></button>
                         <?php } else { ?>
-                        <button class="connexion" aria-label="Bouton connexion"><a href="index.php?ctrl=security&action=login">Connexion</a></button>
-                        <button class="inscription" aria-label="Bouton inscription"><a href="index.php?ctrl=security&action=register">Inscription</a></button>
+                        <button class="layoutBtn" aria-label="Bouton connexion"><a href="index.php?ctrl=security&action=login">Connexion</a></button>
+                        <button class="layoutBtn" aria-label="Bouton inscription"><a href="index.php?ctrl=security&action=register">Inscription</a></button>
                         <?php } ?>
                     </div>
                 </header>
@@ -81,10 +81,10 @@
                 <div class="connexionButtonsFooter">
                     <?php
                     if(App\Session::getUser()){ ?>
-                        <button class="déconnexion" aria-label="Bouton déconnexion"><a href="index.php?ctrl=security&action=logout">Déconnexion</a></button>
+                        <button class="layoutBtn" aria-label="Bouton déconnexion"><a href="index.php?ctrl=security&action=logout">Déconnexion</a></button>
                     <?php } else { ?>
-                        <button class="connexion" aria-label="Bouton connexion"><a href="index.php?ctrl=security&action=login">Connexion</a></button>
-                        <button class="inscription" aria-label="Bouton inscription"><a href="index.php?ctrl=security&action=register">Inscription</a></button>
+                        <button class="layoutBtn" aria-label="Bouton connexion"><a href="index.php?ctrl=security&action=login">Connexion</a></button>
+                        <button class="layoutBtn" aria-label="Bouton inscription"><a href="index.php?ctrl=security&action=register">Inscription</a></button>
                     <?php } ?>
                 </div>
             </footer>

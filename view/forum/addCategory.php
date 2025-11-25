@@ -1,13 +1,12 @@
 <div class="wrapper">
     
-    <h2>Ajouter votre catégorie!</h2>
+    <h2 class="form">Ajouter votre catégorie!</h2>
 
     <div class="addCategoryForm">
-        <form action="index.php?ctrl=forum&action=addNewCategory" method="post">
+        <form class="addCategory" action="index.php?ctrl=forum&action=addNewCategory" method="post">
             <label for="categoryName">Nom de la catégorie :</label>
-            <input type="text" name="categoryName" id="categoryName"><br>
-
-            <input type="submit" name="submit" value="Ajouter">
+            <input type="text" name="categoryName" id="categoryName">
+            <input class="formBtn" type="submit" name="submit" value="Ajouter">
         </form>
     </div>
 

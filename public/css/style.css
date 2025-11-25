@@ -5,30 +5,11 @@
 }
 /**************************************************************** General ****************************************************************/
 
-/************************** connexion buttons **************************/
-button {
-    width: 8em;
-    height: 2.5em;
-    border: 0.2em solid #FFF5EE;
-    border-radius: 15%;
-}
-
-button a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-button:hover {
-    transform: scale(1.2);
-}
-
 /************************** Title h1 **************************/
 h1 {
     width: 100%;
     padding: 0.3em;
-    color: #F28C28;
+    color: #eea154;
     font-size: 3em;
 }
 
@@ -43,7 +24,7 @@ h1 {
 
 /************************** Header **************************/
 header {
-    background-color: #F28C28;
+    background-color: #eea154;
     width: 100%;
     padding: 1.3em;
     display: flex;
@@ -120,6 +101,26 @@ nav a:hover {
     gap: 2em;
 }
 
+/**** connexion buttons ****/
+.layoutBtn {
+    background-color: #FFF5EE;
+    width: 8em;
+    height: 2.5em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
+}
+
+.layoutBtn a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.layoutBtn:hover {
+    transform: scale(1.2);
+}
+
 /************************** Main **************************/
 
 main {
@@ -134,7 +135,7 @@ main {
 /************************** Footer **************************/
 
 footer {
-    background-color: #F28C28;
+    background-color: #eea154;
     width: 100%;
     padding: 1em;
     display: flex;
@@ -191,12 +192,23 @@ footer {
     gap: 2em;
 }
 
-.home {
-    background-color: #F28C28;
+.mainBtn {
+    background-color: #eea154;
+    width: 9em;
+    height: 2.5em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
 }
 
-.home a {
+.mainBtn a {
+    text-decoration: none;
     color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.mainBtn:hover {
+    transform: scale(1.2);
 }
 
 .recentTopic {
@@ -210,7 +222,7 @@ footer {
 
 .recentTopic h2 {
     font-size: 2em;
-    text-decoration: underline #F28C28;
+    text-decoration: underline #eea154;
 }
 
 .topic {
@@ -252,15 +264,113 @@ article h3 {
 }
 
 .topic a:hover {
-    color: #F28C28;
+    color: #eea154;
     transition-duration: 0.4s;
 }
 
 
 /**************************************************************** View : listCategries ****************************************************************/
+.wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.listCategories {
+    width: 30%;
+    padding: 1em;
+}
 
+.listCategories a {
+    text-decoration: none;
+    color: #000;
+    line-height: 2em;
+    font-weight: 600;
+}
 
+.listCategories a:hover {
+    color: #eea154;
+    transition: 0.4s;
+}
+
+.addCategory {
+    width: 100%;
+    padding: 1em;
+}
+
+.addCategory h2 {
+    width: 100%;
+    padding: 0 0 0.5em 0;
+}
+
+/**** connexion buttons ****/
+.mainBtn {
+    background-color: #eea154;
+    width: 9em;
+    height: 3em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
+}
+
+.mainBtn a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.mainBtn:hover {
+    transform: scale(1.2);
+}
+
+/**************************************************************** View : addCategory ****************************************************************/
+
+.wrapper {
+    width: 100%;
+    padding: 1.5em;
+}
+
+.form {
+    width: 100%;
+    padding: 1em 0;
+    font-size: 2em;
+    font-weight: 600;
+    text-decoration: underline #eea154;
+}
+
+.addCategoryForm {
+    width: 100%;
+    padding: 0 3em;
+}
+
+.addCategory {
+    width: 40%;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+}
+
+/**** connexion buttons ****/
+.formBtn {
+    background-color: #eea154;
+    width: 9em;
+    height: 2.5em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.formBtn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
 
 /**************************************************************** View : listTopics ****************************************************************/
 
+
+
+/**************************************************************** View : addCategory ****************************************************************/
