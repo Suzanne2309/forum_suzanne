@@ -407,6 +407,29 @@ article h3 {
     color: #eea154;
 }
 
+.addTopicBtn {
+    background-color: #eea154;
+    width: 9em;
+    height: 3em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addTopicBtn:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+
+.addTopicBtn a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
 /**** delete button ****/
 
 .delete {
@@ -425,4 +448,13 @@ article h3 {
     transition: 0.3s;
 }
 
-/**************************************************************** View : addCategory ****************************************************************/
+/**************************************************************** View : addTopicToCategory ****************************************************************/
+
+
+/**************************************************************** View : addTopicToCategory ****************************************************************/
+
+
+/**************************************************************** View : addTopicToCategory ****************************************************************/
+
+
+/**************************************************************** View : addTopicToCategory ****************************************************************/
