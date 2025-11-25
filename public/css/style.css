@@ -371,6 +371,58 @@ article h3 {
 
 /**************************************************************** View : listTopics ****************************************************************/
 
+.listTopics {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 3em;
+}
 
+.topicCard {
+    width: 80%;
+    padding: 1em;
+    border: 0.2em solid #eea154;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.topicCard h2 a {
+    text-decoration: underline #eea154;
+    color: #000;
+    font-size: 1.3;
+    font-weight: 600;
+}
+
+.topicCard a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+.topicCard a:hover {
+    color: #eea154;
+}
+
+/**** delete button ****/
+
+.delete {
+    background-color: #eea154;
+    width: 2em;
+    height: 2em;
+    padding: 0.2em;
+    color: #fff;
+    border: 0.1em solid #eea154;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.delete:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+}
 
 /**************************************************************** View : addCategory ****************************************************************/
