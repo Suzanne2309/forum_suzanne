@@ -3,7 +3,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+/**************************************************************** General ****************************************************************/
 
+/************************** connexion buttons **************************/
+button {
+    width: 8em;
+    height: 2.5em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 15%;
+}
+
+button a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+/************************** Title h1 **************************/
+h1 {
+    width: 100%;
+    padding: 0.3em;
+    color: #F28C28;
+    font-size: 3em;
+}
 
 /**************************************************************** View : Layout ****************************************************************/
 .wrapper {
@@ -12,11 +39,6 @@
 
 .mainpage {
     width: 100%;
-}
-
-h1 {
-    color: #F28C28;
-    font-size: 3em;
 }
 
 /************************** Header **************************/
@@ -34,19 +56,30 @@ header {
     padding: 0.3em;
 }
 
+.logo img {
+    width: 30%;
+}
+
 nav {
     width: 50%;
     padding: 1em;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 0.3em;
+    justify-content: left;
+    gap: 1.5em;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+nav a:hover {
+    transform: scale(1.2);
+
 }
 
 .search_bar {
@@ -54,7 +87,28 @@ nav a {
     padding: 0.3em;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    position: relative;
+}
+
+.search {
+    background-color: #FFF5EE;
+    width: 60%;
+    height: 2em;
+    color: #333;
+    font-weight: 600;
+    border: 0.4em solid #FFF5EE;
+    border-radius: 3%;
+}
+
+.search_btn {
+    background-color: #FFF5EE;
+    width: 2em;
+    height: 2em;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 7%;
+    position: absolute;
+    left: 13em;
 }
 
 .connexionButtons {
@@ -63,6 +117,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2em;
 }
 
 /************************** Main **************************/
@@ -91,7 +146,6 @@ footer {
 
 .logo {
     width: 20%;
-    padding: 0.3em;
 }
 
 .legal {
@@ -100,43 +154,108 @@ footer {
     color: #fff;
 }
 
-.legal a {
+.legal p a {
     color: #fff;
     text-decoration: none;
 }
 
-.connexionButtons {
+.connexionButtonsFooter {
     width: 20%;
     padding: 0.3em;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2em;
 }
 
 /**************************************************************** View : Home ****************************************************************/
+.hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
 
 .hero p {
     width: 100%;
+    padding: 0 1em;
     color: #000;
     font-size: 1.2em;
+}
+
+.heroButtons {
+    width: 20%;
+    padding: 0.6em 3em;
+    display: flex;
+    gap: 2em;
+}
+
+.home {
+    background-color: #F28C28;
+}
+
+.home a {
+    color: #fff;
 }
 
 .recentTopic {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 0.7em;
 }
 
-.recentTopic article {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+.recentTopic h2 {
+    font-size: 2em;
+    text-decoration: underline #F28C28;
 }
 
-.recentTopic article p {
-    
+.topic {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.topic img {
+    width: 50%;
+    border: 0.2em solid #FFF5EE;
+    border-radius: 5%;
+}
+
+.topic article {
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+article h3 {
+    font-size: 2em;
+}
+
+.justify {
+    width: 80%;
+    line-height: 1.6em;
+    text-justify: auto;
+}
+
+.topic a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+}
+
+.topic a:hover {
+    color: #F28C28;
+    transition-duration: 0.4s;
+}
+
+
 
 /**************************************************************** View : ??? ****************************************************************/

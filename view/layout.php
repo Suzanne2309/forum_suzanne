@@ -18,7 +18,7 @@
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                 <header>
                     <div class="logo">
-
+                        <img src="<?= PUBLIC_DIR ?>/img/ghostyLogo.png" alt="Logo du site, un petit fantôme dessiné avec écrit GHOSTY du haut vers le bas">
                     </div>
                     <nav>
                         <?php
@@ -73,7 +73,7 @@
             </div>
             <footer>
                 <div class="logo">
-
+                    <img src="<?= PUBLIC_DIR ?>/img/ghostyLogo.png" alt="Logo du site, un petit fantôme dessiné avec écrit GHOSTY du haut vers le bas">
                 </div>
                 <div class="legal">
                     <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
